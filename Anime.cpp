@@ -17,15 +17,15 @@ Anime::Anime()
 
 Anime::Anime(string name, string genre, int episodes, int rating, int year, string studio, string director, int seasons, string author)
 {   
-    setName();
-    setGenre();
-    setEpisodes();
-    setSeasons();
-    setYear();
-    setauthor();
-    setRating();
-    setStudio();
-    setDirector();
+    this->name = name;
+    this->genre = genre;
+    this->episodes = episodes;
+    this->rating = rating;
+    this->year = year;
+    this->studio = studio;
+    this->director = director;
+    this->seasons = seasons;
+    this->author = author;
 }
 
 // Destructor

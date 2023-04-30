@@ -6,6 +6,8 @@
 class Register : public Manga
 {
 private:
+    Anime *anime;
+    Manga *manga;
     list<Manga> mangas;
     list<Anime> animes;
     Anime vectorA[100];
@@ -15,6 +17,8 @@ public:
     ~Register();
     void addAnime(Anime *anime);
     void addManga(Manga *manga);
+    void changeAnime(string name);
+    void changeManga(string name);
     void deleteAnime(string name);
     void deleteManga(string name);
     void showAnime(string name);
@@ -25,6 +29,9 @@ public:
     void addMangaToVector(list<Manga> mangas);
     list<Anime> getAnimes();
     list<Manga> getMangas();
+    void registerMain();
+    Anime *readAnimeFile();
+    void readMangaFile();
 };
 
 #endif

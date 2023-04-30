@@ -16,6 +16,7 @@ int Manga::getNumber_of_pages()
 
 void Manga::printManga()
 {
+    cout << "Manga: ------------------------------------------------------" << endl;
     cout << "Name: " << name << endl;
     cout << "Genre: " << genre << endl;
     cout << "Year: " << year << endl;
@@ -25,6 +26,7 @@ void Manga::printManga()
     cout << "Rating: " << rating << endl;
     cout << "Studio: " << studio << endl;
     cout << "Director: " << director << endl;
+    cout << "-------------------------------------------------------------" << endl;
 
     cout << "" << endl;
     

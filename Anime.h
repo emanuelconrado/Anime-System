@@ -26,16 +26,16 @@ public:
     Anime(string name, string genre, int episodes, int rating, int year, 
     string studio, string director, int seasons, string author);
     ~Anime();
-    void virtual setName();
-    void virtual setGenre();
-    void setEpisodes();
-    void setSeasons();
-    void virtual setRating();
-    void virtual setYear();
-    void virtual setStudio();
-    void virtual setDirector();
+    void virtual setName(string nome);
+    void virtual setGenre(string genre);
+    void setEpisodes(int episodes);
+    void setSeasons(int seasons);
+    void virtual setRating(int rating);
+    void virtual setYear(int year);
+    void virtual setStudio(string studio);
+    void virtual setDirector(string director);
     void addCharacter(string character);
-    void setauthor();
+    void setauthor(string author);
     string virtual getName();
     string virtual getGenre();
     int getEpisodes();

@@ -18,16 +18,17 @@ Manga::Manga()
 
 // Constructor with parameters
 
-Manga::Manga(string name, string genre, int rating, int year, string studio, string director, int number_of_volumes, int number_of_pages)
+Manga::Manga(string name, string genre, int rating, int year, string studio, string director, int number_of_volumes, int number_of_pages, string author, string character)
 {
-    MangasetName();
-    setGenre();
-    setRating();
-    setYear();
-    setStudio();
-    setDirector();
-    setNumber_of_volumes();
-    setNumber_of_pages();
+    MangasetName(name);
+    setauthor(author);
+    setGenre(genre);
+    setRating(rating);
+    setYear(year);
+    setStudio(studio);
+    setDirector(director);
+    setNumber_of_volumes(number_of_volumes);
+    setNumber_of_pages(number_of_pages);
 }
 
 // Destructor
