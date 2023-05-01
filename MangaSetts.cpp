@@ -2,14 +2,9 @@
 
 //setts
 
-void Manga::setNumber_of_volumes(int volumes)
+void Manga::setNumber_of_chapters(int chapters)
 {
-    number_of_volumes = volumes;
-}
-
-void Manga::setNumber_of_pages(int pages)
-{
-    number_of_pages = pages;
+    number_of_chapters = chapters;
 }
 
 void Manga::MangasetName(string name)

@@ -12,13 +12,12 @@ Manga::Manga()
     studio = "";
     director = "";
     characters = {};
-    number_of_volumes = 0;
-    number_of_pages = 0;
+    number_of_chapters = 0;
 }
 
 // Constructor with parameters
 
-Manga::Manga(string name, string genre, int rating, int year, string studio, string director, int number_of_volumes, int number_of_pages, string author, string character)
+Manga::Manga(string name, string genre, int rating, int year, string studio, string director, int number_of_chapters, string author, string character)
 {
     MangasetName(name);
     setauthor(author);
@@ -27,8 +26,7 @@ Manga::Manga(string name, string genre, int rating, int year, string studio, str
     setYear(year);
     setStudio(studio);
     setDirector(director);
-    setNumber_of_volumes(number_of_volumes);
-    setNumber_of_pages(number_of_pages);
+    setNumber_of_chapters(number_of_chapters);
 }
 
 // Destructor

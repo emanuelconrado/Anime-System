@@ -47,17 +47,17 @@ int Anime::getidgenre()
 
 void Anime::printAnime()
 {
-    cout << "Anime: ------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     cout << "Name: " << name << endl;
     cout << "Genre: " << genre << endl;
     cout << "Episodes: " << episodes << endl;
     cout << "Seasons: " << seasons << endl;
     cout << "Year: " << year << endl;
     cout << "Author: " << author << endl;
-    cout << "Rating: " << rating << endl;
+    cout << "Rating: " << rating << "/5" << endl;
     cout << "Studio: " << studio << endl;
     cout << "Director: " << director << endl;
-    cout << "-------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------" << endl;
     
     //cout << "Characters: " << endl;
 

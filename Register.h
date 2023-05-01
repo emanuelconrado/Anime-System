@@ -8,6 +8,8 @@ class Register : public Manga
 private:
     Anime *anime;
     Manga *manga;
+    int totalAnime = 0;
+    int totalManga = 0;
     list<Manga> mangas;
     list<Anime> animes;
     Anime vectorA[100];
@@ -23,15 +25,23 @@ public:
     void deleteManga(string name);
     void showAnime(string name);
     void showManga(string name);
-    void printAllAnimes();
-    void printAllMangas();
+    bool checkAnime(string name);
+    bool checkManga(string name);
+    void showAllAnime();
+    void showAllManga();
     void addAnimeToVector(list<Anime> animes);
     void addMangaToVector(list<Manga> mangas);
     list<Anime> getAnimes();
     list<Manga> getMangas();
     void registerMain();
-    Anime *readAnimeFile();
+    void readAnimeFile();
+    void writeAnimeFile();
     void readMangaFile();
+    void writeMangaFile();
+    void showAllAnimeGenres(string genre);
+    void showAllMangaGenres(string genre);
+    void totalAnimegenres();
+    void totalMangagenres();
 };
 
 #endif
