@@ -1,0 +1,96 @@
+//Classe Anime:--------------------------------------------------------//
+
+ Protected:
+	int idgenre;
+	string name;
+	string genre;
+	string author;
+	int episodes;
+	int seasons;
+	int rating;
+	int year;
+	string studio;
+	string director;
+	list<string> characters;
+ Public:
+    Anime();
+    Anime(string name, string genre, int episodes, int rating, int year, 
+    string studio, string director, int seasons, string author);
+    ~Anime();
+    void virtual setName(string nome);
+    void virtual setGenre(string genre);
+    void setEpisodes(int episodes);
+    void setSeasons(int seasons);
+    void virtual setRating(int rating);
+    void virtual setYear(int year);
+    void virtual setStudio(string studio);
+    void virtual setDirector(string director);
+    void addCharacter(string character);
+    void setauthor(string author);
+    string virtual getName();
+    string virtual getGenre();
+    int getEpisodes();
+    int virtual getRating();
+    int virtual getYear();
+    string getStudio();
+    string getDirector();
+    list<string> virtual getCharacters();
+    void printAnime();
+    int getidgenre();
+    int getseasons();
+    string getauthor();
+
+//Classe Manga: Herda de Anime-------------------------------------------------------------------//
+
+ Protected:
+	int number_of_chapters;
+    	int Shonen = 0, Shoujo = 0, Seinen = 0, Josei = 0, Ecchi = 0, Harem = 0, Isekai = 0, Mecha = 0, SliceOfLife = 0;
+ Public:
+    Manga();
+    Manga(string name, string genre, int rating, 
+    int year, string studio, string director, int number_of_chapters, string author, string character = "");
+    ~Manga();
+    void setNumber_of_chapters(int volumes);
+    int getNumber_of_chapters();
+    void printManga();
+    void MangasetName(string name);
+
+//Classe Register: Herda de Anime e Manga: Classe que faz o gerenciamento-----------------------------//
+
+ Private:
+    Anime *anime;
+    Manga *manga;
+    int totalAnime = 0;
+    int totalManga = 0;
+    list<Manga> mangas;
+    list<Anime> animes;
+    Anime vectorA[100];
+    Manga vectorM[100];
+ Public:
+    Register();
+    ~Register();
+    void addAnime(Anime *anime);
+    void addManga(Manga *manga);
+    void changeAnime(string name);
+    void changeManga(string name);
+    void deleteAnime(string name);
+    void deleteManga(string name);
+    void showAnime(string name);
+    void showManga(string name);
+    bool checkAnime(string name);
+    bool checkManga(string name);
+    void showAllAnime();
+    void showAllManga();
+    void addAnimeToVector(list<Anime> animes);
+    void addMangaToVector(list<Manga> mangas);
+    list<Anime> getAnimes();
+    list<Manga> getMangas();
+    void registerMain();
+    void readAnimeFile();
+    void writeAnimeFile();
+    void readMangaFile();
+    void writeMangaFile();
+    void showAllAnimeGenres(string genre);
+    void showAllMangaGenres(string genre);
+    void totalAnimegenres();
+    void totalMangagenres();
