@@ -1,6 +1,9 @@
 #include "Register.h"
+#include "Anime.h"
+#include "Manga.h"
 #include <fstream>
 #include <sstream>
+#include <stdlib.h>
 using namespace std;
 
 // Default constructor
@@ -61,6 +64,8 @@ void Register::changeAnime(string name)
 
                 cin >> change;
                 cin.ignore();
+
+                system("clear");
 
                 switch (change)
                 {
@@ -135,6 +140,8 @@ void Register::changeManga(string name)
             int change;
             while(true)
             {
+                system("clear");
+
                 cout << "-----------------------------------------------------------------" << endl;
                 cout << "What do you want to change?" << endl;
                 cout << "1. Name" << endl;
@@ -147,10 +154,12 @@ void Register::changeManga(string name)
                 cout << "8. Director" << endl;
                 cout << "9. Author" << endl;
                 cout << "10. Exit" << endl;
-                cout << "-----------------------------------------------------------------" << endl;
+                cout << "Your choice: ";
 
                 cin >> change;
                 cin.ignore();
+
+                system("clear");
 
                 switch (change)
                 {
@@ -304,30 +313,34 @@ void Register::showAllMangaGenres(string genre)
 
 bool Register::checkAnime(string name)
 {
-    for (list<Anime>::iterator it = animes.begin(); it != animes.end(); it++)
-    {
-        if (it->getName() == name)
+    bool check = false;
+
+        for (list<Anime>::iterator it = animes.begin(); it != animes.end(); it++)
         {
-            return true;
-        }else{
-            return false;
+            if (it->getName() == name)
+            {
+                check = true;
+            }
         }
-    }
+    
+    return check;
 }
 
 // find manga from the list
 
 bool Register::checkManga(string name)
 {
-    for (list<Manga>::iterator it = mangas.begin(); it != mangas.end(); it++)
-    {
-        if (it->getName() == name)
+    bool check = false;
+
+        for (list<Manga>::iterator it = mangas.begin(); it != mangas.end(); it++)
         {
-            return true;
-        }else{
-            return false;
+            if (it->getName() == name)
+            {
+                check = true;
+            }
         }
-    }
+    
+    return check;
 }
 
 // Print all animes name from the list
@@ -573,6 +586,7 @@ void Register::registerMain()
 
     while (choice != 0)
     {
+        
         cout << "1. Add anime" << endl;
         cout << "2. Add manga" << endl;
         cout << "3. Show section" << endl;
@@ -582,7 +596,7 @@ void Register::registerMain()
         cout << "Your choice: ";
         cin >> choice;
         cin.ignore();
-        cout << "" << endl;
+    
 
         if(choice == 7655)
         {  
@@ -610,9 +624,12 @@ void Register::registerMain()
             relatorio.close();
         }
 
+        system("clear");
+        
         switch (choice)
         {
-        case 1: // Add anime
+        case 1:
+    
             cout << "Enter anime name: ";
             getline(cin, name);
             if(checkAnime(name)){
@@ -632,29 +649,46 @@ void Register::registerMain()
             }
             cout << "Enter anime genre: ";
             getline(cin, genre);
+            cout << "" << endl;
+
             cout << "Enter anime episodes: ";
             cin >> episodes;
+            cout << "" << endl;
+
             cout << "Enter anime seasons: ";
             cin >> seasons;
+            cout << "" << endl;
+
             cout << "Enter anime year: ";
             cin >> year;
             cin.ignore();
+            cout << "" << endl;
+
             cout << "Enter anime author: ";
             getline(cin, author);
+            cout << "" << endl;
+
             cout << "Enter anime rating: ";
             cin >> rating;
             cin.ignore();
+            cout << "" << endl;
+
             cout << "Enter anime studio: ";
             getline(cin, studio);
+            cout << "" << endl;
+
             cout << "Enter anime director: ";
             getline(cin, director);
+            cout << "" << endl;
+
             anime = new Anime(name, genre, episodes, rating, year, studio, director, seasons, author);
             addAnime(anime);
             addAnimeToVector(getAnimes());
             RegisteredAnime++;
             break;
 
-        case 2: //Add manga
+        case 2: 
+
             cout << "Enter manga name: ";
             getline(cin, name);
             if(checkManga(name)){
@@ -674,25 +708,40 @@ void Register::registerMain()
             }
             cout << "Enter manga genre: ";
             getline(cin, genre);
+            cout << "" << endl;
+
             cout << "Enter manga chapters: ";
             cin >> chapters;
+            cout << "" << endl;
+
             cout << "Enter manga year: ";
             cin >> year;
             cin.ignore();
+            cout << "" << endl;
+
             cout << "Enter manga author: ";
             getline(cin, author);
+            cout << "" << endl;
+
             cout << "Enter manga rating: ";
             cin >> rating;
             cin.ignore();
+            cout << "" << endl;
+
             cout << "Enter manga studio: ";
             getline(cin, studio);
+            cout << "" << endl;
+
             cout << "Enter manga director: ";
             getline(cin, director);
+            cout << "" << endl;
+
             manga = new Manga(name, genre, rating, year, studio, director, chapters, author);
             addManga(manga);
             addMangaToVector(getMangas());
             RegisteredManga++;
             break;
+
         case 3: //Show section
             int expression;
             cout << "-----------------------------------------------------------------" << endl; 
@@ -706,7 +755,7 @@ void Register::registerMain()
             cout << "Your choice: ";
             cin >> expression;
             cin.ignore();
-            cout << "" << endl;
+            system("clear");
 
             switch (expression)
             {
@@ -751,7 +800,7 @@ void Register::registerMain()
             cout << "Your choice: ";
             cin >> expression2;
             cin.ignore();
-            cout << "" << endl;
+            system("clear");
 
             switch (expression2)
             {
@@ -778,7 +827,7 @@ void Register::registerMain()
             cout << "Your choice: ";
             cin >> expression3;
             cin.ignore();
-            cout << "" << endl;
+            system("clear");
 
             switch (expression3)
             {

@@ -48,7 +48,6 @@ void Anime::setStudio(string studio)
 void Anime::setDirector(string director)
 {
     this->director = director;
-    cout << "" << endl;
 }
 
 void Anime::addCharacter(string character)
