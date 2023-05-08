@@ -1,7 +1,12 @@
-#ifndef REGISTER_H
-#define REGISTER_H
+#pragma once
 #include "Manga.h"
 #include "Anime.h"
+
+#ifdef _WIN32
+#define CLEAR_CONSOLE "cls"
+#elif linux
+#define CLEAR_CONSOLE "clear"
+#endif
 
 class Register : public Manga
 {
@@ -43,5 +48,3 @@ public:
     void totalAnimegenres();
     void totalMangagenres();
 };
-
-#endif

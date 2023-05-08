@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
+
 using namespace std;
 
 // Default constructor
@@ -64,7 +65,7 @@ void Register::changeAnime(string name)
                 cin >> change;
                 cin.ignore();
 
-                system("clear");
+                system(CLEAR_CONSOLE);
 
                 switch (change)
                 {
@@ -134,7 +135,7 @@ void Register::changeManga(string name)
             int change;
             while(true)
             {
-                system("clear");
+                system(CLEAR_CONSOLE);
 
                 cout << "-----------------------------------------------------------------" << endl;
                 cout << "What do you want to change?" << endl;
@@ -152,7 +153,7 @@ void Register::changeManga(string name)
                 cin >> change;
                 cin.ignore();
 
-                system("clear");
+                system(CLEAR_CONSOLE);
 
                 switch (change)
                 {
@@ -583,7 +584,7 @@ void Register::registerMain()
         cin >> choice;
         cin.ignore();
 
-        system("clear");
+        system(CLEAR_CONSOLE);
 
         if(choice == 7655)
         {  
@@ -735,7 +736,7 @@ void Register::registerMain()
             cout << "Your choice: ";
             cin >> expression;
             cin.ignore();
-            system("clear");
+            system(CLEAR_CONSOLE);
 
             switch (expression)
             {
@@ -780,7 +781,7 @@ void Register::registerMain()
             cout << "Your choice: ";
             cin >> expression2;
             cin.ignore();
-            system("clear");
+            system(CLEAR_CONSOLE);
 
             switch (expression2)
             {
@@ -807,7 +808,7 @@ void Register::registerMain()
             cout << "Your choice: ";
             cin >> expression3;
             cin.ignore();
-            system("clear");
+            system(CLEAR_CONSOLE);
 
             switch (expression3)
             {
