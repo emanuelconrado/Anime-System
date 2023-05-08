@@ -20,7 +20,7 @@ void Item::setGenre(string genre)
     }
 }
 
-void Item::setRating(int rating)
+void Item::setRating(float rating)
 {
     this->rating = rating;
 }

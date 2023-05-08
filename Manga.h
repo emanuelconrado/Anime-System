@@ -11,7 +11,7 @@ protected:
 
 public:
     Manga();
-    Manga(string name, string genre, int rating, 
+    Manga(string name, string genre, float rating, 
     int year, string publisher, int chapters, string author);
     ~Manga();
 

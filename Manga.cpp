@@ -4,6 +4,7 @@
 
 Manga::Manga()
 {
+    type = 2;
     name = "";
     genre = "";
     rating = 0;
@@ -14,9 +15,10 @@ Manga::Manga()
 
 // Constructor with parameters
 
-Manga::Manga(string name, string genre, int rating, int year, string publisher, int chapters, string author)
+Manga::Manga(string name, string genre, float rating, int year, string publisher, int chapters, string author)
 : Item(name, genre, rating, year, author)
 {
+    this->type = 2;
     setPublisher(publisher);
     setChapters(chapters);
 }

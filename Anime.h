@@ -9,18 +9,17 @@ private:
     int episodes;
     int seasons;
     string studio;
-    list<string> characters;
     
 public:
     Anime();
-    Anime(string name, string genre, int episodes, int rating, int year, 
+    Anime(string name, string genre, int episodes, float rating, int year, 
     string studio, int seasons, string author);
     ~Anime();
 
     //sets
     void setEpisodes(int episodes);
     void setSeasons(int seasons);
-    void virtual setStudio(string studio);
+    void setStudio(string studio);
     
     //gets
     int getEpisodes();
@@ -29,8 +28,6 @@ public:
 
     void print();
 };
-
-
 
 
 #endif

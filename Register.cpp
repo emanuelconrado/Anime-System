@@ -4,7 +4,6 @@
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
-
 using namespace std;
 
 // Default constructor
@@ -44,7 +43,8 @@ void Register::changeAnime(string name)
         if (it->getName() == name)
         {
             string name, genre, studio, character, author;
-            int episodes, seasons, rating, year, chapters;
+            int episodes, seasons, year, chapters;
+            float rating;
             int change;
 
             while (true)
@@ -131,8 +131,9 @@ void Register::changeManga(string name)
         if (it->getName() == name)
         {
             string name, genre, studio, character, author;
-            int rating, year, chapters;
+            int year, chapters;
             int change;
+            float rating;
             while(true)
             {
                 system(CLEAR_CONSOLE);
@@ -197,7 +198,7 @@ void Register::changeManga(string name)
                 default:
                     cout << "Invalid option." << endl;
                     break;
-            }
+                }
             }
         }    
     }
@@ -216,9 +217,12 @@ void Register::deleteAnime(string name)
             animes.erase(it);
             cout << "Anime deleted." << endl;
             cout << "-----------------------------------------------------------------" << endl;
-            break;
+            return;
         }
     }
+
+    cout << name << "isn't in the anime catalog." << endl;
+    cout << "-----------------------------------------------------------------" << endl;
 }
 
 // Delete manga from the list
@@ -232,9 +236,12 @@ void Register::deleteManga(string name)
             mangas.erase(it);
             cout << "Manga deleted." << endl;
             cout << "-----------------------------------------------------------------" << endl;
-            break;
+            return;
         }
     }
+
+    cout << name << "isn't in the manga catalog." << endl;
+    cout << "-----------------------------------------------------------------" << endl;
 }
 
 // Print animes from the list
@@ -463,7 +470,8 @@ void Register::readMangaFile()
     ifstream file("output/manga.txt");
     string line;
     string name, genre, author, studio;
-    int chapters, year, rating;
+    int chapters, year;
+    float rating;
 
     if (file.is_open())
     {
@@ -563,7 +571,8 @@ void Register::registerMain()
     Anime *anime;
     Manga *manga;
     string name, genre, studio, publisher, character, author;
-    int episodes, seasons, rating, year, chapters;
+    int episodes, seasons, year, chapters;
+    float rating;
     int choice = 1;
     int RegisteredAnime = 0;
     int RegisteredManga = 0;

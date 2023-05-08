@@ -10,7 +10,7 @@ string Item::getGenre()
     return genre;
 }
 
-int Item::getRating()
+float Item::getRating()
 {
     return rating;
 }
@@ -28,4 +28,9 @@ int Item::getIdGenre()
 string Item::getAuthor()
 {
     return author;
+}
+
+int Item::getType()
+{
+    return type;
 }

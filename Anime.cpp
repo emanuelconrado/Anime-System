@@ -13,7 +13,7 @@ Anime::Anime() : Item()
 
 // Constructor with parameters
 
-Anime::Anime(string name, string genre, int episodes, int rating, int year, string studio, int seasons, string author)
+Anime::Anime(string name, string genre, int episodes, float rating, int year, string studio, int seasons, string author)
  : Item(name, genre, rating, year, author)
 {   
     this->type = 1;

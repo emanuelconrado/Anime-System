@@ -8,7 +8,7 @@ Item::Item()
     year = 0;
     author = "";
 }
-Item::Item(string name, string genre, int rating, int year, string author)
+Item::Item(string name, string genre, float rating, int year, string author)
 {   
     setName(name);
     setGenre(genre);

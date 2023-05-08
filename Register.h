@@ -1,4 +1,5 @@
-#pragma once
+#ifndef REGISTER_H
+#define REGISTER_H
 #include "Manga.h"
 #include "Anime.h"
 
@@ -48,3 +49,5 @@ public:
     void totalAnimegenres();
     void totalMangagenres();
 };
+
+#endif

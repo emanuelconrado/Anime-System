@@ -13,26 +13,27 @@ class Item{
         int idgenre;
         string name;
         string genre;
-        int rating;
+        float rating;
         int year;
         string author;
     
     public:
         Item();
-        Item(string name, string genre, int rating, int year, string author);
+        Item(string name, string genre, float rating, int year, string author);
         virtual ~Item();
 
         //sets 
         virtual void setName(string nome);
         virtual void setGenre(string genre);
-        virtual void setRating(int rating);
+        virtual void setRating(float rating);
         virtual void setYear(int year);
         virtual void setAuthor(string author);
 
         //gets
+        virtual int getType();
         virtual string getName();
         virtual string getGenre();
-        virtual int getRating();
+        virtual float getRating();
         virtual int getYear();
         virtual string getAuthor();
         virtual int getIdGenre();
