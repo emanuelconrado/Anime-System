@@ -271,13 +271,13 @@ void Register::showManga(string name)
         if (it->getName() == name)
         {
             it->print();
-            break;
+            return;
         }
-
-        cout << "Manga not found." << endl;
-        cout << "-----------------------------------------------------------------" << endl;
-        cout << "" << endl;
     }
+    
+    cout << "Manga not found." << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "" << endl;
     
 }
 
