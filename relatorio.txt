@@ -1,13 +1,13 @@
 Animes registered: 0
 Mangas registered: 0
-Total Anime: 2
-Total Manga: 1
-Total: 3
+Total Anime: 3
+Total Manga: 2
+Total: 5
 Animes and Manga Shonen: 2
 Animes and Manga Shoujo: 0
 Animes and Manga Seinen: 0
 Animes and Manga Josei: 0
-Animes and Manga Ecchi: 0
+Animes and Manga Ecchi: 1
 Animes and Manga Harem: 0
 Animes and Manga Isekai: 0
 Animes and Manga Mecha: 0

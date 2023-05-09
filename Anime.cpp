@@ -2,35 +2,47 @@
 
 // Default constructor
 
-Anime::Anime()
+Anime::Anime() : Item()
 {
-    name = "";
-    genre = "";
+    type = 1;
     episodes = 0;
-    rating = 0;
-    year = 0;
+    seasons = 0;
     studio = "";
-    director = "";
+
 }
 
 // Constructor with parameters
 
-Anime::Anime(string name, string genre, int episodes, int rating, int year, string studio, string director, int seasons, string author)
+Anime::Anime(string name, string genre, int episodes, float rating, int year, string studio, int seasons, string author)
+ : Item(name, genre, rating, year, author)
 {   
-    this->name = name;
-    setGenre(genre);
+    this->type = 1;
     this->episodes = episodes;
-    this->rating = rating;
-    this->year = year;
     this->studio = studio;
-    this->director = director;
     this->seasons = seasons;
-    this->author = author;
-}
 
+}
 // Destructor
 
 Anime::~Anime()
 {
+}
+
+void Anime::print()
+{
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Name: " << name << endl;
+    cout << "Genre: " << genre << endl;
+    cout << "Episodes: " << episodes << endl;
+    cout << "Seasons: " << seasons << endl;
+    cout << "Year: " << year << endl;
+    cout << "Author: " << author << endl;
+    cout << "Rating: " << rating << "/5" << endl;
+    cout << "Studio: " << studio << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    
+    //cout << "Characters: " << endl;
+
+    cout << "" << endl;
 }
 

@@ -47,8 +47,9 @@ void Register::changeAnime(string name)
     {
         if (it->getName() == name)
         {
-            string name, genre, studio, director, character, author;
-            int episodes, seasons, rating, year, chapters;
+            string name, genre, studio, character, author;
+            int episodes, seasons, year, chapters;
+            float rating;
             int change;
 
             while (true)
@@ -62,15 +63,14 @@ void Register::changeAnime(string name)
                 cout << "5. Seasons" << endl;
                 cout << "6. Rating" << endl;
                 cout << "7. Studio" << endl;
-                cout << "8. Director" << endl;
-                cout << "9. Author" << endl;
-                cout << "10. Exit" << endl;
+                cout << "8. Author" << endl;
+                cout << "9. Exit" << endl;
                 cout << "-----------------------------------------------------------------" << endl;
 
                 cin >> change;
                 cin.ignore();
 
-                system("clear");
+                system(CLEAR_CONSOLE);
 
                 switch (change)
                 {
@@ -110,16 +110,11 @@ void Register::changeAnime(string name)
                     it->setStudio(studio);
                     break;
                 case 8:
-                    cout << "Director: ";
-                    getline(cin, director);
-                    it->setDirector(director);
-                    break;
-                case 9:
                     cout << "Author: ";
                     getline(cin, author);
-                    it->setauthor(author);
+                    it->setAuthor(author);
                     break;
-                case 10:
+                case 9:
                     return;
                 default:
                     cout << "Invalid option." << endl;
@@ -140,12 +135,13 @@ void Register::changeManga(string name)
     {
         if (it->getName() == name)
         {
-            string name, genre, studio, director, character, author;
-            int episodes, seasons, rating, year, chapters;
+            string name, genre, studio, character, author;
+            int year, chapters;
             int change;
+            float rating;
             while(true)
             {
-                system("clear");
+                system(CLEAR_CONSOLE);
 
                 cout << "-----------------------------------------------------------------" << endl;
                 cout << "What do you want to change?" << endl;
@@ -155,16 +151,15 @@ void Register::changeManga(string name)
                 cout << "4. Volumes" << endl;
                 cout << "5. Pages" << endl;
                 cout << "6. Rating" << endl;
-                cout << "7. Studio" << endl;
-                cout << "8. Director" << endl;
-                cout << "9. Author" << endl;
-                cout << "10. Exit" << endl;
+                cout << "7. Publisher" << endl;
+                cout << "8. Author" << endl;
+                cout << "9. Exit" << endl;
                 cout << "Your choice: ";
 
                 cin >> change;
                 cin.ignore();
 
-                system("clear");
+                system(CLEAR_CONSOLE);
 
                 switch (change)
                 {
@@ -186,7 +181,7 @@ void Register::changeManga(string name)
                 case 4:
                     cout << "Volumes: ";
                     cin >> chapters;
-                    it->setNumber_of_chapters(chapters);
+                    it->setChapters(chapters);
                     break;
                 case 6:
                     cout << "Rating: ";
@@ -194,26 +189,21 @@ void Register::changeManga(string name)
                     it->setRating(rating);
                     break;
                 case 7:
-                    cout << "Studio: ";
+                    cout << "Publisher: ";
                     getline(cin, studio);
-                    it->setStudio(studio);
+                    it->setPublisher(studio);
                     break;
                 case 8:
-                    cout << "Director: ";
-                    getline(cin, director);
-                    it->setDirector(director);
-                    break;
-                case 9:
                     cout << "Author: ";
                     getline(cin, author);
-                    it->setauthor(author);
+                    it->setAuthor(author);
                     break;
-                case 10:
+                case 9:
                     return;
                 default:
                     cout << "Invalid option." << endl;
                     break;
-            }
+                }
             }
         }    
     }
@@ -232,9 +222,12 @@ void Register::deleteAnime(string name)
             animes.erase(it);
             cout << "Anime deleted." << endl;
             cout << "-----------------------------------------------------------------" << endl;
-            break;
+            return;
         }
     }
+
+    cout << name << "isn't in the anime catalog." << endl;
+    cout << "-----------------------------------------------------------------" << endl;
 }
 
 // Delete manga from the list
@@ -248,9 +241,12 @@ void Register::deleteManga(string name)
             mangas.erase(it);
             cout << "Manga deleted." << endl;
             cout << "-----------------------------------------------------------------" << endl;
-            break;
+            return;
         }
     }
+
+    cout << name << "isn't in the manga catalog." << endl;
+    cout << "-----------------------------------------------------------------" << endl;
 }
 
 // Print animes from the list
@@ -261,7 +257,7 @@ void Register::showAnime(string name)
     {
         if (it->getName() == name)
         {
-            it->printAnime();
+            it->print();
             return;
         }
     }
@@ -279,14 +275,14 @@ void Register::showManga(string name)
     {
         if (it->getName() == name)
         {
-            it->printManga();
-            break;
+            it->print();
+            return;
         }
-
-        cout << "Manga not found." << endl;
-        cout << "-----------------------------------------------------------------" << endl;
-        cout << "" << endl;
     }
+    
+    cout << "Manga not found." << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "" << endl;
     
 }
 
@@ -380,7 +376,7 @@ void Register::addMangaToVector(list<Manga> mangas)
 {
         for (int i = 0; i < 100; i++)
         {
-            if (vectorM[i].getidgenre() == i)
+            if (vectorM[i].getIdGenre() == i)
             {
                 vectorM[i] = mangas.front();
                 break;
@@ -394,7 +390,7 @@ void Register::addAnimeToVector(list<Anime> animes)
 {
         for (int i = 0; i < 100; i++)
         {
-            if (vectorA[i].getidgenre() == i)
+            if (vectorA[i].getIdGenre() == i)
             {
                 vectorA[i] = animes.front();
                 break;
@@ -422,7 +418,7 @@ void Register::readAnimeFile()
 {
     ifstream file("output/anime.txt");
     string line;
-    string name, genre, author, studio, director;
+    string name, genre, author, studio;
     int episodes, seasons, year, rating;
 
     if (file.is_open())
@@ -441,12 +437,11 @@ void Register::readAnimeFile()
             getline(ss, author, ',');
             ss >> rating;
             ss.ignore();
-            getline(ss, studio, ',');
-            getline(ss, director, '\n');
+            getline(ss, studio, '\n');
 
             //Boku no Hero, Shonen, 24, 2, 2014, Kōhei Horikoshi, 3, Bones, Yuzuru 
 
-            anime = new Anime(name, genre, episodes, rating, year, studio, director, seasons, author);
+            anime = new Anime(name, genre, episodes, rating, year, studio, seasons, author);
             addAnime(anime);
             addAnimeToVector(getAnimes());
             totalAnime++;
@@ -464,7 +459,7 @@ void Register::writeAnimeFile(){
     ofstream file("output/anime.txt");
     if(file.is_open()){
         for(list<Anime>::iterator it = animes.begin(); it != animes.end(); it++){
-            file << it->getName() << "," << it->getGenre() << "," << it->getEpisodes() << "," << it->getseasons() << "," << it->getYear() << "," << it->getauthor() << "," << it->getRating() << "," << it->getStudio() << "," << it->getDirector() << endl;
+            file << it->getName() << "," << it->getGenre() << "," << it->getEpisodes() << "," << it->getSeasons() << "," << it->getYear() << "," << it->getAuthor() << "," << it->getRating() << "," << it->getStudio() << endl;
         }
     }else{
         cout << "Write operation failed" << endl;
@@ -479,8 +474,9 @@ void Register::readMangaFile()
 {
     ifstream file("output/manga.txt");
     string line;
-    string name, genre, author, studio, director;
-    int chapters, year, rating;
+    string name, genre, author, studio;
+    int chapters, year;
+    float rating;
 
     if (file.is_open())
     {
@@ -497,10 +493,9 @@ void Register::readMangaFile()
             getline(ss, author, ',');
             ss >> rating;
             ss.ignore();
-            getline(ss, studio, ',');
-            getline(ss, director, '\n');
+            getline(ss, studio, '\n');
 
-            manga = new Manga(name, genre, rating, year, studio, director, chapters, author);
+            manga = new Manga(name, genre, rating, year, studio, chapters, author);
             addManga(manga);
             addMangaToVector(getMangas());
             totalManga++;
@@ -525,7 +520,7 @@ void Register::writeMangaFile(){
 
             //Oshi no Ko,Drama,116,2020,Aka Akasaka,5,Shueisha’s Weekly Young Jump,Marue Horiuchi
             
-            file << it->getName() << "," << it->getGenre() << "," << it->getNumber_of_chapters() << "," << it->getYear() << "," << it->getauthor() << "," << it->getRating() << "," << it->getStudio() << "," << it->getDirector() << endl;
+            file << it->getName() << "," << it->getGenre() << "," << it->getChapters() << "," << it->getYear() << "," << it->getAuthor() << "," << it->getRating() << "," << it->getPublisher() << endl;
         }
     }else{
         cout << "Write operation failed" << endl;
@@ -580,8 +575,9 @@ void Register::registerMain()
     Register registers;
     Anime *anime;
     Manga *manga;
-    string name, genre, studio, director, character, author;
-    int episodes, seasons, rating, year, chapters;
+    string name, genre, studio, publisher, character, author;
+    int episodes, seasons, year, chapters;
+    float rating;
     int choice = 1;
     int RegisteredAnime = 0;
     int RegisteredManga = 0;
@@ -601,33 +597,7 @@ void Register::registerMain()
         cout << "Your choice: ";
         cin >> choice;
         cin.ignore();
-    
-
-        if(choice == 7655)
-        {  
-            //Print relatório
-            totalAnimegenres();
-            totalMangagenres();
-            ofstream relatorio;
-            relatorio.open("relatorio.txt");
-            relatorio << "Animes registered: " << RegisteredAnime << endl;
-            relatorio << "Mangas registered: " << RegisteredManga << endl;
-            relatorio << "Total Anime: " << totalAnime + RegisteredAnime << endl;
-            relatorio << "Total Manga: " << totalManga + RegisteredManga << endl;
-            relatorio << "Total: " << totalAnime + RegisteredAnime + totalManga + RegisteredManga << endl;
-            relatorio << "Animes and Manga Shonen: " << Shonen << endl;
-            relatorio << "Animes and Manga Shoujo: " << Shoujo << endl;
-            relatorio << "Animes and Manga Seinen: " << Seinen << endl;
-            relatorio << "Animes and Manga Josei: " << Josei << endl;
-            relatorio << "Animes and Manga Ecchi: " << Ecchi << endl;
-            relatorio << "Animes and Manga Harem: " << Harem << endl;
-            relatorio << "Animes and Manga Isekai: " << Isekai << endl;
-            relatorio << "Animes and Manga Mecha: " << Mecha << endl;
-            relatorio << "Animes and Manga Slice Of Life: " << SliceOfLife << endl;
-            cout << "Relatório gerado com sucesso!" << endl;
-            cout << "-----------------------------------------------------------------" << endl;
-            relatorio.close();
-        }
+        ofstream relatorio;
 
         system(CLEAR_CONSOLE);
         
@@ -682,11 +652,7 @@ void Register::registerMain()
             getline(cin, studio);
             cout << "" << endl;
 
-            cout << "Enter anime director: ";
-            getline(cin, director);
-            cout << "" << endl;
-
-            anime = new Anime(name, genre, episodes, rating, year, studio, director, seasons, author);
+            anime = new Anime(name, genre, episodes, rating, year, studio, seasons, author);
             addAnime(anime);
             addAnimeToVector(getAnimes());
             RegisteredAnime++;
@@ -733,15 +699,11 @@ void Register::registerMain()
             cin.ignore();
             cout << "" << endl;
 
-            cout << "Enter manga studio: ";
-            getline(cin, studio);
+            cout << "Enter manga publisher: ";
+            getline(cin, publisher);
             cout << "" << endl;
 
-            cout << "Enter manga director: ";
-            getline(cin, director);
-            cout << "" << endl;
-
-            manga = new Manga(name, genre, rating, year, studio, director, chapters, author);
+            manga = new Manga(name, genre, rating, year, publisher, chapters, author);
             addManga(manga);
             addMangaToVector(getMangas());
             RegisteredManga++;
@@ -760,6 +722,7 @@ void Register::registerMain()
             cout << "Your choice: ";
             cin >> expression;
             cin.ignore();
+            system(CLEAR_CONSOLE);
             system(CLEAR_CONSOLE);
 
             switch (expression)
@@ -806,6 +769,7 @@ void Register::registerMain()
             cin >> expression2;
             cin.ignore();
             system(CLEAR_CONSOLE);
+            system(CLEAR_CONSOLE);
 
             switch (expression2)
             {
@@ -833,6 +797,7 @@ void Register::registerMain()
             cin >> expression3;
             cin.ignore();
             system(CLEAR_CONSOLE);
+            system(CLEAR_CONSOLE);
 
             switch (expression3)
             {
@@ -853,6 +818,29 @@ void Register::registerMain()
         case 0:
             writeAnimeFile();
             writeMangaFile();
+            break;
+        case 7655:
+            
+            //Print relatório
+            totalAnimegenres();
+            totalMangagenres();
+            relatorio.open("relatorio.txt");
+            relatorio << "Animes registered: " << RegisteredAnime << endl;
+            relatorio << "Mangas registered: " << RegisteredManga << endl;
+            relatorio << "Total Anime: " << totalAnime + RegisteredAnime << endl;
+            relatorio << "Total Manga: " << totalManga + RegisteredManga << endl;
+            relatorio << "Total: " << totalAnime + RegisteredAnime + totalManga + RegisteredManga << endl;
+            relatorio << "Animes and Manga Shonen: " << Shonen << endl;
+            relatorio << "Animes and Manga Shoujo: " << Shoujo << endl;
+            relatorio << "Animes and Manga Seinen: " << Seinen << endl;
+            relatorio << "Animes and Manga Josei: " << Josei << endl;
+            relatorio << "Animes and Manga Ecchi: " << Ecchi << endl;
+            relatorio << "Animes and Manga Harem: " << Harem << endl;
+            relatorio << "Animes and Manga Isekai: " << Isekai << endl;
+            relatorio << "Animes and Manga Mecha: " << Mecha << endl;
+            relatorio << "Animes and Manga Slice Of Life: " << SliceOfLife << endl;
+            cout << "Relatório gerado com sucesso!" << endl;
+            relatorio.close();
             break;
         default:
             cout << "Wrong choice!" << endl;

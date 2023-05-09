@@ -3,6 +3,12 @@
 #include "Manga.h"
 #include "Anime.h"
 
+#ifdef _WIN32
+#define CLEAR_CONSOLE "cls"
+#elif linux
+#define CLEAR_CONSOLE "clear"
+#endif
+
 class Register : public Manga
 {
 private:

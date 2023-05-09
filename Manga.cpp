@@ -4,33 +4,50 @@
 
 Manga::Manga()
 {
+    type = 2;
     name = "";
     genre = "";
-    episodes = 0;
     rating = 0;
     year = 0;
-    studio = "";
-    director = "";
-    characters = {};
-    number_of_chapters = 0;
+    publisher = "";
+    chapters = 0;
 }
 
 // Constructor with parameters
 
-Manga::Manga(string name, string genre, int rating, int year, string studio, string director, int number_of_chapters, string author, string character)
+Manga::Manga(string name, string genre, float rating, int year, string publisher, int chapters, string author)
+: Item(name, genre, rating, year, author)
 {
-    MangasetName(name);
-    setauthor(author);
-    setGenre(genre);
-    setRating(rating);
-    setYear(year);
-    setStudio(studio);
-    setDirector(director);
-    setNumber_of_chapters(number_of_chapters);
+    this->type = 2;
+    setPublisher(publisher);
+    setChapters(chapters);
 }
 
 // Destructor
 
 Manga::~Manga()
 {
+}
+
+void Manga::print()
+{
+    cout << "-----------------------------------------------------------------" << endl;
+    cout << "Name: " << name << endl;
+    cout << "Genre: " << genre << endl;
+    cout << "Year: " << year << endl;
+    cout << "Number of chapters: " << chapters << endl;
+    cout << "Author: " << author << endl;
+    cout << "Rating: " << rating << "/5"<< endl;
+    cout << "Studio: " << publisher << endl;
+    cout << "-----------------------------------------------------------------" << endl;
+
+    cout << "" << endl;
+    
+    /*
+    cout << "Characters: " << endl;
+    for (auto i = characters.begin(); i != characters.end(); i++)
+    {
+        cout << *i << endl;
+    }
+    */
 }
