@@ -26,5 +26,3 @@ Aka Akasaka
 5
 Shueisha’s Weekly Young Jump
 Marue Horiuchi
-
-cout << "-----------------------------------------------------------------" << endl;
